@@ -187,7 +187,7 @@
 
         <div class="py-1"></div>
 
-        <!-- ✨ AI Assistant Integration Panel (At Very Bottom) -->
+        <!-- ✨ AI Assistant Integration Panel -->
         <div class="w-full glass-panel rounded-2xl p-4 border border-blue-500/20 overflow-hidden relative group">
             <div class="absolute top-0 right-0 p-3 opacity-10">
                 <i data-lucide="sparkles" class="w-12 h-12 text-blue-400"></i>
@@ -298,12 +298,17 @@
 
     <!-- QR Code Modal -->
     <div id="qr-modal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 hidden flex flex-col items-center justify-center p-8">
-        <div class="bg-white p-6 rounded-3xl shadow-2xl scale-0 transition-transform duration-300" id="qr-content">
-            <img id="qr-image" src="" alt="QR Code" class="w-48 h-48 mx-auto">
-            <p class="text-slate-900 font-bold mt-4 text-center">Scan to Connect</p>
-            <p class="text-slate-500 text-[10px] text-center mt-1 uppercase tracking-widest">Allen Albert T. Varias</p>
+        <div class="bg-white p-6 rounded-3xl shadow-2xl scale-0 transition-transform duration-300 flex flex-col items-center" id="qr-content">
+            <img id="qr-image" src="" alt="QR Code" class="w-48 h-48">
+            <p class="text-slate-900 font-bold mt-4">Scan to Connect</p>
+            <p class="text-slate-500 text-[10px] uppercase tracking-widest mt-1">Allen Albert T. Varias</p>
         </div>
-        <button onclick="toggleQR()" class="mt-8 px-8 py-3 bg-white text-slate-950 rounded-full font-bold text-sm shadow-xl">Close</button>
+        <div class="flex gap-3 mt-8">
+            <button onclick="downloadQR()" class="px-6 py-3 bg-blue-600 text-white rounded-full font-bold text-sm shadow-xl flex items-center gap-2 hover:bg-blue-500 transition-colors">
+                <i data-lucide="download" class="w-4 h-4"></i> Save
+            </button>
+            <button onclick="toggleQR()" class="px-6 py-3 bg-white text-slate-950 rounded-full font-bold text-sm shadow-xl hover:bg-slate-100 transition-colors">Close</button>
+        </div>
     </div>
 
     <!-- Notification Toast -->
@@ -430,12 +435,33 @@
             const modal = document.getElementById('qr-modal');
             const content = document.getElementById('qr-content');
             if (modal.classList.contains('hidden')) {
-                document.getElementById('qr-image').src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(window.location.href)}`;
+                document.getElementById('qr-image').src = `https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encodeURIComponent(window.location.href)}`;
                 modal.classList.remove('hidden');
                 setTimeout(() => content.classList.add('scale-100'), 50);
             } else {
                 content.classList.remove('scale-100');
                 setTimeout(() => modal.classList.add('hidden'), 300);
+            }
+        }
+
+        async function downloadQR() {
+            const qrImg = document.getElementById('qr-image');
+            if (!qrImg.src) return;
+            
+            try {
+                const response = await fetch(qrImg.src);
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'Allen_Varias_QR.png';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+                showToast("QR Image saved!");
+            } catch (error) {
+                showToast("Download failed. Try saving manually.");
             }
         }
 
