@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allen Albert T. Varias | Systems Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #020617;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-action {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-action:active {
+            transform: scale(0.96);
+        }
+
+        .gradient-border {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            padding: 2px;
+            border-radius: 9999px;
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.25);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-slide-up {
+            animation: slideUp 0.8s ease-out forwards;
+        }
+
+        #profile-img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center p-5 selection:bg-blue-500/30">
+
+    <!-- Profile Header -->
+    <header class="w-full max-w-md text-center mt-8 animate-slide-up">
+        <div class="inline-block gradient-border mb-6">
+            <div class="h-32 w-32 rounded-full bg-slate-900 flex items-center justify-center border-4 border-slate-950 overflow-hidden relative">
+                <!-- PHOTO SLOT: Looks for profile.jpg in your GitHub folder -->
+                <img id="profile-img" src="profile1.jpg" alt="Allen Albert T. Varias" 
+                     onerror="this.style.display='none'; document.getElementById('profile-fallback').style.display='flex';">
+                
+                <div id="profile-fallback" class="hidden absolute inset-0 flex items-center justify-center bg-slate-800">
+                    <i data-lucide="user" class="w-16 h-16 text-blue-400/50"></i>
+                </div>
+            </div>
+        </div>
+        <h1 class="text-2xl font-bold tracking-tight px-4">Allen Albert T. Varias</h1>
+        <p class="text-blue-400 font-semibold mt-1 text-base uppercase tracking-widest">Systems Engineer</p>
+        
+        <div class="flex items-center justify-center gap-2 mt-4 text-[11px] font-bold text-slate-500 uppercase tracking-tighter">
+            <i data-lucide="map-pin" class="w-3 h-3"></i>
+            Auckland, New Zealand
+        </div>
+    </header>
+
+    <!-- Professional Links -->
+    <main class="w-full max-w-md mt-10 space-y-3 animate-slide-up" style="animation-delay: 0.1s;">
+        
+        <!-- Save Contact (vCard) -->
+        <button onclick="downloadVCard()" class="w-full btn-action bg-blue-600 hover:bg-blue-500 text-white flex items-center p-4 rounded-2xl shadow-lg shadow-blue-900/20 group border border-blue-400/20">
+            <div class="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center mr-4">
+                <i data-lucide="user-plus"></i>
+            </div>
+            <div class="flex-1 text-left">
+                <p class="font-bold text-sm text-white">Save to Contacts</p>
+                <p class="text-[11px] text-blue-100">Add me to your address book</p>
+            </div>
+            <i data-lucide="download" class="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity"></i>
+        </button>
+
+        <div class="py-1"></div>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/allen-albert-varias" target="_blank" class="btn-action glass-panel flex items-center p-4 rounded-2xl hover:bg-slate-800/40 group">
+            <div class="w-11 h-11 rounded-xl bg-blue-600/20 flex items-center justify-center text-blue-500 mr-4">
+                <i data-lucide="linkedin"></i>
+            </div>
+            <div class="flex-1">
+                <p class="font-bold text-sm">LinkedIn</p>
+                <p class="text-[11px] text-slate-400">Professional profile</p>
+            </div>
+            <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-600 group-hover:text-blue-400 transition-colors"></i>
+        </a>
+
+        <!-- Phone -->
+        <a href="tel:02041280989" class="btn-action glass-panel flex items-center p-4 rounded-2xl hover:bg-slate-800/40 group">
+            <div class="w-11 h-11 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 mr-4">
+                <i data-lucide="phone"></i>
+            </div>
+            <div class="flex-1 text-left">
+                <p class="font-bold text-sm">Call Me</p>
+                <p class="text-[11px] text-slate-400">020 4128 0989</p>
+            </div>
+            <i data-lucide="phone-forwarded" class="w-4 h-4 text-slate-600 group-hover:text-emerald-400 transition-colors"></i>
+        </a>
+
+        <!-- Gmail -->
+        <button onclick="handleContact('allenvarias@gmail.com', 'Gmail')" class="w-full btn-action glass-panel flex items-center p-4 rounded-2xl hover:bg-slate-800/40 group text-left">
+            <div class="w-11 h-11 rounded-xl bg-red-500/20 flex items-center justify-center text-red-400 mr-4">
+                <i data-lucide="mail"></i>
+            </div>
+            <div class="flex-1">
+                <p class="font-bold text-sm">Gmail (Primary)</p>
+                <p class="text-[11px] text-slate-400">allenvarias@gmail.com</p>
+            </div>
+            <i data-lucide="copy" class="w-4 h-4 text-slate-600 group-hover:text-red-400 transition-colors"></i>
+        </button>
+
+        <!-- Yahoo -->
+        <button onclick="handleContact('allenvarias@yahoo.com', 'Yahoo')" class="w-full btn-action glass-panel flex items-center p-4 rounded-2xl hover:bg-slate-800/40 group text-left">
+            <div class="w-11 h-11 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 mr-4">
+                <i data-lucide="mail-plus"></i>
+            </div>
+            <div class="flex-1">
+                <p class="font-bold text-sm">Yahoo Mail</p>
+                <p class="text-[11px] text-slate-400">allenvarias@yahoo.com</p>
+            </div>
+            <i data-lucide="copy" class="w-4 h-4 text-slate-600 group-hover:text-purple-400 transition-colors"></i>
+        </button>
+
+        <div class="py-2"></div>
+
+        <!-- GitHub (Moved to Last) -->
+        <a href="https://github.com/AlVarias" target="_blank" class="btn-action glass-panel flex items-center p-4 rounded-2xl hover:bg-slate-800/40 group">
+            <div class="w-11 h-11 rounded-xl bg-slate-700/40 flex items-center justify-center text-slate-100 mr-4">
+                <i data-lucide="github"></i>
+            </div>
+            <div class="flex-1">
+                <p class="font-bold text-sm">GitHub</p>
+                <p class="text-[11px] text-slate-400">Repositories & Scripts</p>
+            </div>
+            <i data-lucide="code" class="w-4 h-4 text-slate-600 group-hover:text-slate-100 transition-colors"></i>
+        </a>
+
+        <!-- Portfolio (Moved to Last) -->
+        <a href="https://alvarias.github.io" target="_blank" class="btn-action glass-panel flex items-center p-4 rounded-2xl hover:bg-slate-800/40 group border-l-4 border-l-blue-500">
+            <div class="w-11 h-11 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 mr-4">
+                <i data-lucide="layout"></i>
+            </div>
+            <div class="flex-1">
+                <p class="font-bold text-sm">Portfolio</p>
+                <p class="text-[11px] text-slate-400">Google Sites Portfolio</p>
+            </div>
+            <i data-lucide="external-link" class="w-4 h-4 text-slate-600 group-hover:text-blue-400 transition-colors"></i>
+        </a>
+
+    </main>
+
+    <!-- Social Media -->
+    <div class="w-full max-w-md mt-8 animate-slide-up" style="animation-delay: 0.2s;">
+        <div class="grid grid-cols-3 gap-3">
+            <a href="https://www.facebook.com/share/1AEnupvxwu/" target="_blank" class="btn-action glass-panel p-4 rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-slate-800/40">
+                <i data-lucide="facebook" class="text-blue-500 w-5 h-5"></i>
+                <span class="text-[10px] font-bold">Facebook</span>
+            </a>
+            <a href="https://www.instagram.com/allennware?igsh=MW93NzlqbndqbndoMQ==" target="_blank" class="btn-action glass-panel p-4 rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-slate-800/40">
+                <i data-lucide="instagram" class="text-pink-500 w-5 h-5"></i>
+                <span class="text-[10px] font-bold">Instagram</span>
+            </a>
+            <a href="https://tiktok.com/@just.al.for.you" target="_blank" class="btn-action glass-panel p-4 rounded-2xl flex flex-col items-center justify-center gap-2 hover:bg-slate-800/40">
+                <i data-lucide="music-2" class="text-slate-100 w-5 h-5"></i>
+                <span class="text-[10px] font-bold">TikTok</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Quick Tools -->
+    <div class="w-full max-w-md mt-6 grid grid-cols-2 gap-3 animate-slide-up" style="animation-delay: 0.3s;">
+        <button onclick="toggleQR()" class="btn-action glass-panel p-4 rounded-2xl flex items-center justify-center gap-3 hover:bg-blue-600/20">
+            <i data-lucide="qr-code" class="text-blue-400 w-4 h-4"></i>
+            <span class="text-xs font-bold">QR Code</span>
+        </button>
+        <button onclick="shareLink()" class="btn-action glass-panel p-4 rounded-2xl flex items-center justify-center gap-3 hover:bg-slate-800/40">
+            <i data-lucide="share" class="text-slate-400 w-4 h-4"></i>
+            <span class="text-xs font-bold">Share Link</span>
+        </button>
+    </div>
+
+    <!-- QR Modal -->
+    <div id="qr-modal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 hidden flex flex-col items-center justify-center p-8">
+        <div class="bg-white p-6 rounded-3xl shadow-2xl scale-0 transition-transform duration-300" id="qr-content">
+            <img id="qr-image" src="" alt="QR Code" class="w-48 h-48 mx-auto">
+            <p class="text-slate-900 font-bold mt-4 text-center">Scan to Connect</p>
+            <p class="text-slate-500 text-[10px] text-center mt-1 uppercase tracking-widest">Allen Albert T. Varias</p>
+        </div>
+        <button onclick="toggleQR()" class="mt-8 px-8 py-3 bg-white text-slate-950 rounded-full font-bold text-sm shadow-xl">Close</button>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 px-6 py-3 rounded-full bg-blue-600 text-white text-xs font-bold shadow-2xl translate-y-32 transition-transform duration-300 flex items-center gap-2 z-[100]">
+        <i data-lucide="check-circle" class="w-4 h-4"></i>
+        <span id="toast-message">Copied</span>
+    </div>
+
+    <footer class="mt-16 mb-8 text-center animate-slide-up opacity-40" style="animation-delay: 0.4s;">
+        <p class="text-[9px] font-bold uppercase tracking-[0.4em]">&copy; 2026 Allen's profiles</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        function downloadVCard() {
+            const vcard = "BEGIN:VCARD\n" +
+                          "VERSION:3.0\n" +
+                          "FN:Allen Albert T. Varias\n" +
+                          "ORG:Systems Engineering\n" +
+                          "TITLE:Systems Engineer\n" +
+                          "TEL;TYPE=CELL:02041280989\n" +
+                          "EMAIL;TYPE=INTERNET:allenvarias@gmail.com\n" +
+                          "URL:https://www.linkedin.com/in/allen-albert-varias\n" +
+                          "END:VCARD";
+            
+            const blob = new Blob([vcard], { type: "text/vcard" });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('hidden', '');
+            a.setAttribute('href', url);
+            a.setAttribute('download', 'Allen_Varias.vcf');
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            showToast("Contact file ready!");
+        }
+
+        function handleContact(email, type) {
+            const el = document.createElement('textarea');
+            el.value = email;
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            showToast(`${type} address copied!`);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const msg = document.getElementById('toast-message');
+            msg.innerText = message;
+            toast.classList.remove('translate-y-32');
+            setTimeout(() => toast.classList.add('translate-y-32'), 2500);
+        }
+
+        function toggleQR() {
+            const modal = document.getElementById('qr-modal');
+            const content = document.getElementById('qr-content');
+            const img = document.getElementById('qr-image');
+            
+            if (modal.classList.contains('hidden')) {
+                const currentUrl = window.location.href;
+                img.src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(currentUrl)}&margin=10`;
+                modal.classList.remove('hidden');
+                setTimeout(() => content.classList.add('scale-100'), 50);
+            } else {
+                content.classList.remove('scale-100');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            }
+        }
+
+        async function shareLink() {
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: 'Allen Albert T. Varias',
+                        text: 'Connect with me - Systems Engineer',
+                        url: window.location.href
+                    });
+                } catch (e) {}
+            } else {
+                const el = document.createElement('textarea');
+                el.value = window.location.href;
+                document.body.appendChild(el);
+                el.select();
+                document.execCommand('copy');
+                document.body.removeChild(el);
+                showToast("Page link copied!");
+            }
+        }
+    </script>
+</body>
+</html>
