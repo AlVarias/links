@@ -110,7 +110,7 @@
         </button>
 
         <!-- Download CV -->
-        <a id="cv-download-link" href="CV.pdf" download class="w-full btn-action glass-panel flex items-center p-4 rounded-2xl hover:bg-slate-800/40 group border-l-4 border-l-emerald-500">
+        <a id="cv-download-link" href="Allen_Varias_Systems_Engineer.pdf" download class="w-full btn-action glass-panel flex items-center p-4 rounded-2xl hover:bg-slate-800/40 group border-l-4 border-l-emerald-500">
             <div class="w-11 h-11 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 mr-4">
                 <i data-lucide="file-text"></i>
             </div>
@@ -348,7 +348,7 @@
 
         // Contact Functions
         function downloadVCard() {
-            const vcard = "BEGIN:VCARD\nVERSION:3.0\nFN:Allen Albert T. Varias\nTITLE:Systems Engineer\nTEL;TYPE=CELL:02041280989\nEMAIL;TYPE=INTERNET:allenvarias@gmail.com\nEND:VCARD";
+            const vcard = "BEGIN:VCARD\nVERSION:3.0\nFN:Allen Albert T. Varias\nTITLE:Systems Engineer\nTEL;TYPE=CELL:02041280989\nEMAIL:INTERNET:allenvarias@gmail.com\nEND:VCARD";
             const blob = new Blob([vcard], { type: "text/vcard" });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -368,9 +368,9 @@
             showToast(`${label} copied!`);
         }
 
-        function showToast(msg) {
+        function showToast(message) {
             const toast = document.getElementById('toast');
-            document.getElementById('toast-message').innerText = msg;
+            document.getElementById('toast-message').innerText = message;
             toast.classList.remove('translate-y-32');
             setTimeout(() => toast.classList.add('translate-y-32'), 2500);
         }
