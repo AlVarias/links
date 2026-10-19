@@ -60,15 +60,6 @@
             animation: slideUp 0.6s ease-out forwards;
         }
 
-        @keyframes blink {
-            0%, 49% { opacity: 1; }
-            50%, 100% { opacity: 0; }
-        }
-
-        .cursor-blink {
-            animation: blink 1s step-end infinite;
-        }
-
         ::-webkit-scrollbar { width: 5px; height: 5px; }
         ::-webkit-scrollbar-track { background: #0f172a; }
         ::-webkit-scrollbar-thumb { background: #334155; border-radius: 9999px; }
@@ -98,28 +89,21 @@
     </nav>
 
     <!-- Profile Header -->
-    <header id="main-header" class="w-full max-w-md text-center animate-slide-up z-10">
-        <!-- CMD Prompt Badge -->
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-slate-950/90 border border-slate-800 font-mono-code text-[11px] text-emerald-400 mb-6 shadow-inner">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span id="typed-cmd"></span>
-            <span id="cmd-cursor" class="inline-block w-1.5 h-3.5 bg-emerald-400 cursor-blink align-middle"></span>
-        </div>
-
-        <!-- Avatar with Portfolio Glow -->
-        <div class="relative inline-block group mb-4">
+    <header id="main-header" class="w-full max-w-md text-center animate-slide-up z-10 mt-2">
+        <!-- Larger Avatar with Portfolio Glow -->
+        <div class="relative inline-block group mb-5">
             <div class="absolute inset-0 bg-blue-500 rounded-full blur-xl opacity-25 group-hover:opacity-45 transition-opacity duration-500"></div>
-            <div class="relative h-32 w-32 rounded-full bg-slate-800 flex items-center justify-center border-4 border-slate-800 shadow-2xl overflow-hidden mx-auto">
+            <div class="relative h-40 w-40 sm:h-44 sm:w-44 rounded-full bg-slate-800 flex items-center justify-center border-4 border-slate-800 shadow-2xl overflow-hidden mx-auto">
                 <img id="profile-img" src="profile1.jpg" alt="Allen Albert T. Varias"
                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                      onerror="if (this.src.indexOf('profile1.jpg') !== -1) { this.src = 'profile.jpg'; } else { this.style.display='none'; document.getElementById('profile-fallback').style.display='flex'; }">
                 <div id="profile-fallback" class="hidden absolute inset-0 items-center justify-center bg-slate-800">
-                    <span class="text-4xl font-bold text-slate-500 tracking-tighter">AV</span>
+                    <span class="text-5xl font-bold text-slate-500 tracking-tighter">AV</span>
                 </div>
             </div>
         </div>
 
-        <!-- Name & Title (No trailing periods) -->
+        <!-- Name & Title -->
         <h1 class="text-2xl sm:text-3xl font-bold text-slate-100 tracking-tight">Allen Albert T. Varias</h1>
         <p class="text-blue-400 font-semibold mt-1 text-sm sm:text-base uppercase tracking-widest">Systems Engineer</p>
 
@@ -147,7 +131,7 @@
     <!-- Main Content -->
     <main id="main-content" class="w-full max-w-md mt-6 space-y-3 animate-slide-up z-10">
 
-        <!-- Primary Action Grid: Save Contact + Email -->
+        <!-- Primary Action Grid: Save Contact + Download CV -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <!-- Save Contact (.vcf) -->
             <button onclick="downloadVCard()" class="btn-action bg-blue-600 hover:bg-blue-700 text-white flex items-center p-3.5 rounded-xl shadow-lg shadow-blue-900/25 group">
@@ -369,18 +353,6 @@
 
     <script>
         lucide.createIcons();
-
-        // CMD Typewriter Effect on Load
-        document.addEventListener('DOMContentLoaded', () => {
-            const cmdStr = "C:\\Users\\Allen> init_card.exe --links";
-            const target = document.getElementById('typed-cmd');
-            let idx = 0;
-            const timer = setInterval(() => {
-                idx++;
-                target.textContent = cmdStr.slice(0, idx);
-                if (idx >= cmdStr.length) clearInterval(timer);
-            }, 28);
-        });
 
         // Optional: Enter your Gemini API Key here for live custom queries
         const apiKey = "";
