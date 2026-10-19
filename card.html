@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Allen Albert T. Varias - NFC & QR Business Card</title>
+  <title>Allen Albert T. Varias - High-Contrast Printable Business Card</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,500;0,600;0,700;0,800;1,600&family=JetBrains+Mono:wght@600;700&display=swap');
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
     }
 
     /* 3D Flip Card Styles */
@@ -34,6 +34,9 @@
 
     /* Exact 3.5" x 2" Print Styles */
     @media print {
+      @page {
+        margin: 0.5in;
+      }
       body {
         background: #ffffff !important;
         margin: 0 !important;
@@ -48,13 +51,13 @@
         align-items: center !important;
         justify-content: center !important;
         gap: 0.4in !important;
-        padding-top: 0.6in !important;
+        padding-top: 0.4in !important;
       }
       .print-card {
         width: 3.5in !important;
         height: 2in !important;
         box-shadow: none !important;
-        border: 0.5pt solid #cbd5e1 !important;
+        border: 0.5pt solid #94a3b8 !important;
         border-radius: 0 !important;
         page-break-inside: avoid !important;
         -webkit-print-color-adjust: exact !important;
@@ -67,14 +70,14 @@
 
   <!-- Top Controls & Header -->
   <div class="no-print max-w-5xl w-full text-center mb-8 space-y-4">
-    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-mono uppercase tracking-widest">
-      Print-Ready 3.5" × 2.0" • 300 DPI Vector SVG & PNG
+    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono uppercase tracking-widest">
+      High-Contrast Print Edition • 3.5" × 2.0" (300 DPI)
     </div>
     <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-      Allen Albert T. Varias — NFC & QR Business Card
+      Allen Albert T. Varias — Printable NFC & QR Card
     </h1>
     <p class="text-slate-400 text-sm max-w-xl mx-auto">
-      Minimalist matte-black edition with live scannable QR code (<span class="text-blue-400 font-mono">alvarias.github.io/links</span>) and Proverbs 25:2.
+      Upgraded with pure white high-contrast typography and heavier bold stroke weights so every word prints crisp and readable against the matte-black background.
     </p>
 
     <!-- View Mode Switcher & Download Buttons -->
@@ -97,13 +100,13 @@
       <div class="h-5 w-[1px] bg-slate-800 hidden sm:block mx-1"></div>
 
       <button
-        onclick="downloadCardPNG('front-card-svg', 'Allen_Varias_Card_FRONT_300DPI.png')"
+        onclick="downloadCardPNG('front-card-svg', 'Allen_Varias_Card_FRONT_PrintReady.png')"
         class="bg-blue-600 hover:bg-blue-500 text-white font-medium px-4 py-2 rounded-lg text-sm transition flex items-center gap-2 shadow-lg shadow-blue-600/20"
       >
         Download Front (PNG)
       </button>
       <button
-        onclick="downloadCardPNG('back-card-svg', 'Allen_Varias_Card_BACK_300DPI.png')"
+        onclick="downloadCardPNG('back-card-svg', 'Allen_Varias_Card_BACK_PrintReady.png')"
         class="bg-emerald-600 hover:bg-emerald-500 text-white font-medium px-4 py-2 rounded-lg text-sm transition flex items-center gap-2 shadow-lg shadow-emerald-600/20"
       >
         Download Back (PNG)
@@ -112,7 +115,7 @@
         onclick="downloadCombinedMockupPNG()"
         class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-medium px-4 py-2 rounded-lg text-sm transition"
       >
-        Download Mockup Sheet (PNG)
+        Download Both Side-by-Side (PNG)
       </button>
       <button
         onclick="window.print()"
@@ -129,103 +132,107 @@
     <!-- FRONT CARD -->
     <div class="w-full max-w-[525px] flex flex-col items-center">
       <div class="no-print flex items-center justify-between w-full mb-2.5 px-1">
-        <span class="text-xs font-mono uppercase tracking-widest text-slate-400">Front Side</span>
-        <span class="text-xs font-mono text-blue-400">Matte Black + Brushed Metal</span>
+        <span class="text-xs font-mono uppercase tracking-widest text-slate-300">Front Side</span>
+        <span class="text-xs font-mono text-emerald-400">High-Contrast Print Ready</span>
       </div>
-      <div class="print-card w-full aspect-[1050/600] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.75)] border border-slate-800/90">
+      <div class="print-card w-full aspect-[1050/600] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.75)] border border-slate-700">
         <svg id="front-card-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 600" width="100%" height="100%">
           <defs>
             <linearGradient id="matteBgFront" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#16181d" />
-              <stop offset="50%" stop-color="#0f1115" />
-              <stop offset="100%" stop-color="#090a0d" />
+              <stop offset="0%" stop-color="#14161b" />
+              <stop offset="50%" stop-color="#0d0f13" />
+              <stop offset="100%" stop-color="#07080a" />
             </linearGradient>
-            <radialGradient id="ambientGlow" cx="50%" cy="42%" r="48%">
-              <stop offset="0%" stop-color="#2563eb" stop-opacity="0.14" />
-              <stop offset="100%" stop-color="#090a0d" stop-opacity="0" />
+            <radialGradient id="ambientGlow" cx="50%" cy="40%" r="48%">
+              <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.18" />
+              <stop offset="100%" stop-color="#07080a" stop-opacity="0" />
             </radialGradient>
             <linearGradient id="metalBlue" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#60a5fa" />
-              <stop offset="40%" stop-color="#2563eb" />
-              <stop offset="80%" stop-color="#1d4ed8" />
-              <stop offset="100%" stop-color="#1e3a8a" />
+              <stop offset="0%" stop-color="#93c5fd" />
+              <stop offset="35%" stop-color="#3b82f6" />
+              <stop offset="75%" stop-color="#2563eb" />
+              <stop offset="100%" stop-color="#1d4ed8" />
             </linearGradient>
             <linearGradient id="metalSilver" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#94a3b8" />
-              <stop offset="45%" stop-color="#f8fafc" />
-              <stop offset="70%" stop-color="#cbd5e1" />
+              <stop offset="0%" stop-color="#cbd5e1" />
+              <stop offset="45%" stop-color="#ffffff" />
+              <stop offset="75%" stop-color="#e2e8f0" />
               <stop offset="100%" stop-color="#ffffff" />
             </linearGradient>
             <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.65" />
+              <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.7" />
             </filter>
           </defs>
 
           <!-- Card Base -->
           <rect width="1050" height="600" fill="url(#matteBgFront)" />
           <rect width="1050" height="600" fill="url(#ambientGlow)" />
-          <rect x="28" y="28" width="994" height="544" rx="14" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.5" />
+          <rect x="28" y="28" width="994" height="544" rx="14" fill="none" stroke="#ffffff" stroke-opacity="0.18" stroke-width="2" />
 
-          <!-- Minimalist NFC Indicator -->
-          <g transform="translate(525, 74)" fill="none" stroke="#94a3b8" stroke-linecap="round">
-            <text x="-26" y="6" fill="#94a3b8" stroke="none" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="2.5">NFC</text>
-            <path d="M 18 -6 A 9 9 0 0 1 18 8" stroke-width="2" />
-            <path d="M 24 -11 A 16 16 0 0 1 24 13" stroke-width="2" />
-            <path d="M 30 -16 A 23 23 0 0 1 30 18" stroke-width="2" />
+          <!-- High-Contrast NFC Indicator (Pure White + Thicker Waves) -->
+          <g transform="translate(525, 76)" fill="none" stroke="#ffffff" stroke-linecap="round">
+            <text x="-34" y="7" fill="#ffffff" stroke="none" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800" letter-spacing="3">NFC</text>
+            <path d="M 22 -7 A 10 10 0 0 1 22 9" stroke-width="3" />
+            <path d="M 29 -13 A 18 18 0 0 1 29 15" stroke-width="3" />
+            <path d="M 36 -19 A 26 26 0 0 1 36 21" stroke-width="3" />
           </g>
 
           <!-- AV Emblem -->
-          <g filter="url(#dropShadow)" transform="translate(0, 12)">
-            <!-- Blue 'A' -->
+          <g filter="url(#dropShadow)" transform="translate(0, 8)">
+            <!-- Bright Metallic Blue 'A' -->
             <path
-              d="M 445 142
-                 C 453 127, 468 127, 476 142
-                 L 560 322
-                 L 512 322
-                 L 460 202
-                 L 398 322
-                 L 350 322
+              d="M 445 140
+                 C 453 125, 468 125, 476 140
+                 L 560 320
+                 L 510 320
+                 L 460 200
+                 L 398 320
+                 L 348 320
                  Z"
               fill="url(#metalBlue)"
             />
-            <!-- Silver 'V' Wing -->
+            <!-- Bright Silver-White 'V' Wing -->
             <path
-              d="M 405 265
-                 L 685 112
-                 L 562 319
-                 C 553 333, 536 333, 527 319
-                 L 492 249
-                 L 525 229
-                 L 545 271
-                 L 622 153
-                 L 405 275
+              d="M 405 263
+                 L 685 110
+                 L 562 317
+                 C 553 331, 536 331, 527 317
+                 L 492 247
+                 L 525 227
+                 L 545 269
+                 L 622 151
+                 L 405 273
                  Z"
               fill="url(#metalSilver)"
             />
           </g>
 
-          <!-- Name & Minimalist Title -->
+          <!-- Name (Pure Crisp White, Extra Bold) -->
           <text
             x="525"
-            y="436"
+            y="432"
             text-anchor="middle"
-            fill="#f8fafc"
+            fill="#ffffff"
             font-family="Inter, Arial, sans-serif"
-            font-size="39"
-            font-weight="700"
+            font-size="42"
+            font-weight="800"
             letter-spacing="4.5"
           >
             ALLEN ALBERT T. VARIAS
           </text>
 
+          <!-- Accent Divider Pill Between Name & Title -->
+          <rect x="465" y="452" width="120" height="3.5" rx="2" fill="#60a5fa" />
+
+          <!-- Title (Bright Ice-White & Bold so it never fades in print) -->
           <text
             x="525"
-            y="478"
+            y="495"
             text-anchor="middle"
-            fill="#94a3b8"
+            fill="#ffffff"
             font-family="Inter, Arial, sans-serif"
-            font-size="20"
-            font-weight="400"
+            font-size="26"
+            font-weight="700"
             letter-spacing="7.5"
           >
             SYSTEMS ENGINEER
@@ -237,96 +244,97 @@
     <!-- BACK CARD -->
     <div class="w-full max-w-[525px] flex flex-col items-center">
       <div class="no-print flex items-center justify-between w-full mb-2.5 px-1">
-        <span class="text-xs font-mono uppercase tracking-widest text-slate-400">Back Side</span>
-        <span class="text-xs font-mono text-emerald-400">Scannable QR + Proverbs 25:2</span>
+        <span class="text-xs font-mono uppercase tracking-widest text-slate-300">Back Side</span>
+        <span class="text-xs font-mono text-emerald-400">Bold White Print Typography</span>
       </div>
-      <div class="print-card w-full aspect-[1050/600] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.75)] border border-slate-800/90">
+      <div class="print-card w-full aspect-[1050/600] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.75)] border border-slate-700">
         <svg id="back-card-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 600" width="100%" height="100%">
           <defs>
             <linearGradient id="matteBgBack" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#16181d" />
-              <stop offset="50%" stop-color="#0f1115" />
-              <stop offset="100%" stop-color="#090a0d" />
+              <stop offset="0%" stop-color="#14161b" />
+              <stop offset="50%" stop-color="#0d0f13" />
+              <stop offset="100%" stop-color="#07080a" />
             </linearGradient>
           </defs>
 
           <!-- Card Base -->
           <rect width="1050" height="600" fill="url(#matteBgBack)" />
-          <rect x="28" y="28" width="994" height="544" rx="14" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.5" />
+          <rect x="28" y="28" width="994" height="544" rx="14" fill="none" stroke="#ffffff" stroke-opacity="0.18" stroke-width="2" />
 
-          <!-- SCAN THIS Header -->
+          <!-- SCAN THIS Header (Pure White, Extra Bold) -->
           <text
             x="525"
-            y="88"
+            y="84"
             text-anchor="middle"
-            fill="#f1f5f9"
+            fill="#ffffff"
             font-family="Inter, Arial, sans-serif"
-            font-size="25"
-            font-weight="700"
+            font-size="28"
+            font-weight="800"
             letter-spacing="6.5"
           >
             SCAN THIS
           </text>
 
-          <!-- White QR Frame -->
-          <rect x="410" y="110" width="230" height="230" rx="12" fill="#f8fafc" />
+          <!-- Pure White QR Frame -->
+          <rect x="410" y="104" width="230" height="230" rx="12" fill="#ffffff" />
           <!-- Vector QR Code Injected Here -->
-          <g id="qr-code-group" transform="translate(422, 122)"></g>
+          <g id="qr-code-group" transform="translate(422, 116)"></g>
 
-          <!-- Updated Links URL -->
+          <!-- Updated Links URL (Pure White & Bold Monospace) -->
           <text
             x="525"
-            y="376"
+            y="374"
             text-anchor="middle"
-            fill="#cbd5e1"
-            font-family="'JetBrains Mono', monospace"
-            font-size="17"
-            font-weight="500"
+            fill="#ffffff"
+            font-family="'JetBrains Mono', Courier, monospace"
+            font-size="22"
+            font-weight="700"
             letter-spacing="1.2"
           >
             https://alvarias.github.io/links
           </text>
 
-          <!-- Minimalist Accent Line -->
-          <line x1="475" y1="406" x2="575" y2="406" stroke="#3b82f6" stroke-opacity="0.55" stroke-width="1.5" />
+          <!-- Bright Blue Accent Divider -->
+          <rect x="465" y="396" width="120" height="3.5" rx="2" fill="#60a5fa" />
 
-          <!-- Proverbs 25:2 Scripture -->
+          <!-- Proverbs 25:2 Scripture (Pure White, Semi-Bold Italic, Larger for Print) -->
           <text
             x="525"
-            y="446"
+            y="440"
             text-anchor="middle"
-            fill="#94a3b8"
+            fill="#ffffff"
             font-family="Inter, Georgia, serif"
-            font-size="16"
+            font-size="20.5"
             font-style="italic"
-            font-weight="300"
+            font-weight="600"
             letter-spacing="0.4"
           >
             "It is the glory of God to conceal a matter;
           </text>
           <text
             x="525"
-            y="472"
+            y="470"
             text-anchor="middle"
-            fill="#94a3b8"
+            fill="#ffffff"
             font-family="Inter, Georgia, serif"
-            font-size="16"
+            font-size="20.5"
             font-style="italic"
-            font-weight="300"
+            font-weight="600"
             letter-spacing="0.4"
           >
             to search out a matter is the glory of kings."
           </text>
 
+          <!-- Reference (Bright Sky Blue / White, Extra Bold) -->
           <text
             x="525"
-            y="508"
+            y="512"
             text-anchor="middle"
-            fill="#64748b"
+            fill="#93c5fd"
             font-family="Inter, Arial, sans-serif"
-            font-size="12.5"
-            font-weight="600"
-            letter-spacing="4"
+            font-size="17"
+            font-weight="800"
+            letter-spacing="4.5"
           >
             — PROVERBS 25:2
           </text>
@@ -346,8 +354,8 @@
       class="perspective-1000 w-full aspect-[1050/600] cursor-pointer"
     >
       <div id="flip-inner" class="flip-card-inner relative w-full h-full">
-        <div id="flip-front-slot" class="flip-card-front absolute inset-0 rounded-2xl overflow-hidden shadow-2xl border border-slate-800"></div>
-        <div id="flip-back-slot" class="flip-card-back absolute inset-0 rounded-2xl overflow-hidden shadow-2xl border border-slate-800"></div>
+        <div id="flip-front-slot" class="flip-card-front absolute inset-0 rounded-2xl overflow-hidden shadow-2xl border border-slate-700"></div>
+        <div id="flip-back-slot" class="flip-card-back absolute inset-0 rounded-2xl overflow-hidden shadow-2xl border border-slate-700"></div>
       </div>
     </div>
   </div>
@@ -379,7 +387,7 @@
 
       const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
       path.setAttribute("d", d);
-      path.setAttribute("fill", "#090a0d");
+      path.setAttribute("fill", "#000000");
       document.getElementById("qr-code-group").appendChild(path);
 
       // Clone both SVGs into the 3D Flip Card preview
@@ -455,7 +463,7 @@
       ctx.drawImage(back, 1170, 80);
 
       const a = document.createElement("a");
-      a.download = "Allen_Varias_NFC_QR_Business_Card_Mockup.png";
+      a.download = "Allen_Varias_NFC_QR_Business_Card_PrintReady.png";
       a.href = canvas.toDataURL("image/png");
       a.click();
     }
