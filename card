@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Allen Albert T. Varias - Printable NFC & QR Business Card</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Exact 3.5" x 2" Print Styles */
+    @media print {
+      body {
+        background: #ffffff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-sheet {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 0.5in !important;
+        padding-top: 0.75in !important;
+      }
+      .card-wrapper {
+        width: 3.5in !important;
+        height: 2in !important;
+        box-shadow: none !important;
+        border: 0.5pt solid #cbd5e1 !important;
+        border-radius: 0 !important;
+        page-break-inside: avoid !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100 flex flex-col items-center py-12 px-4">
+
+  <!-- Header & Export Controls (Hidden when printing) -->
+  <div class="no-print max-w-5xl w-full text-center mb-10 space-y-4">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-mono uppercase tracking-widest">
+      300 DPI Print-Ready • 3.5" × 2.0" (1050 × 600 px)
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+      Minimalist NFC & QR Business Card
+    </h1>
+    <p class="text-slate-400 text-sm max-w-xl mx-auto">
+      Download high-resolution PNG images for professional card printers (VistaPrint, Moo, local print shops) or print directly to PDF.
+    </p>
+
+    <!-- Action Buttons -->
+    <div class="flex flex-wrap items-center justify-center gap-4 pt-3">
+      <button
+        onclick="downloadCardPNG('front-card-svg', 'Allen_Varias_Business_Card_FRONT_300DPI.png')"
+        class="bg-blue-600 hover:bg-blue-500 text-white font-medium px-5 py-2.5 rounded-lg text-sm transition flex items-center gap-2 shadow-lg shadow-blue-600/20"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Front (PNG)
+      </button>
+
+      <button
+        onclick="downloadCardPNG('back-card-svg', 'Allen_Varias_Business_Card_BACK_300DPI.png')"
+        class="bg-emerald-600 hover:bg-emerald-500 text-white font-medium px-5 py-2.5 rounded-lg text-sm transition flex items-center gap-2 shadow-lg shadow-emerald-600/20"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Back (PNG)
+      </button>
+
+      <button
+        onclick="downloadCombinedSheetPNG()"
+        class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-medium px-5 py-2.5 rounded-lg text-sm transition flex items-center gap-2"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+        Download Both Side-by-Side (PNG)
+      </button>
+
+      <button
+        onclick="window.print()"
+        class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-medium px-5 py-2.5 rounded-lg text-sm transition flex items-center gap-2"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Print / Save as PDF (3.5" × 2")
+      </button>
+    </div>
+  </div>
+
+  <!-- Cards Display Area -->
+  <div class="print-sheet max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-10 items-center justify-items-center">
+
+    <!-- ================= FRONT CARD ================= -->
+    <div class="w-full max-w-[525px] flex flex-col items-center">
+      <span class="no-print text-xs font-mono uppercase tracking-widest text-slate-400 mb-3">Front Side (NFC Enabled)</span>
+      <div class="card-wrapper w-full aspect-[1050/600] rounded-2xl overflow-hidden shadow-2xl border border-slate-800">
+        <svg
+          id="front-card-svg"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1050 600"
+          width="100%"
+          height="100%"
+        >
+          <defs>
+            <!-- Matte Black Card Background Gradient -->
+            <linearGradient id="matteBgFront" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#18191c" />
+              <stop offset="50%" stop-color="#111215" />
+              <stop offset="100%" stop-color="#0b0c0e" />
+            </linearGradient>
+
+            <!-- Subtle Ambient Glow -->
+            <radialGradient id="blueGlow" cx="45%" cy="42%" r="45%">
+              <stop offset="0%" stop-color="#2563eb" stop-opacity="0.12" />
+              <stop offset="100%" stop-color="#0b0c0e" stop-opacity="0" />
+            </radialGradient>
+
+            <!-- Brushed Metallic Blue Gradient for 'A' -->
+            <linearGradient id="metallicBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#60a5fa" />
+              <stop offset="35%" stop-color="#2563eb" />
+              <stop offset="70%" stop-color="#1d4ed8" />
+              <stop offset="100%" stop-color="#1e3a8a" />
+            </linearGradient>
+
+            <!-- Brushed Metallic Silver Gradient for 'V' Swoosh -->
+            <linearGradient id="metallicSilver" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#94a3b8" />
+              <stop offset="45%" stop-color="#f1f5f9" />
+              <stop offset="65%" stop-color="#cbd5e1" />
+              <stop offset="100%" stop-color="#ffffff" />
+            </linearGradient>
+
+            <!-- Drop Shadow for Emblem -->
+            <filter id="logoShadow" x="-20%" y="-20%" width="140%" height="1
