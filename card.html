@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Allen Albert T. Varias - High-Contrast Printable Business Card</title>
+  <title>Allen Albert T. Varias - Printable Business Card (8.4x5.3cm)</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,500;0,600;0,700;0,800;1,600&family=JetBrains+Mono:wght@600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,500;0,600;0,700;0,800;1,600&display=swap');
 
     body {
       font-family: 'Inter', Arial, sans-serif;
@@ -32,11 +32,11 @@
       transform: rotateY(180deg);
     }
 
-    /* Exact 3.5" x 2" Print Styles */
+    /* Exact 8.4cm x 5.3cm Print Styles */
     @media print {
       @page {
         size: A4 portrait;
-        margin: 0.5in;
+        margin: 15mm; /* Safe print margins */
       }
       body {
         background: #ffffff !important;
@@ -72,15 +72,17 @@
         print-color-adjust: exact !important;
       }
 
+      /* Crop Marks for cutting out sticker paper */
       .card-cell {
-        border: 0.5pt dashed #94a3b8 !important; /* Cutting guides for A4 */
+        border: 0.5pt dashed #94a3b8 !important; 
+        box-sizing: border-box;
       }
     }
   </style>
 </head>
 <body class="min-h-screen bg-slate-950 text-slate-100 flex flex-col items-center py-10 px-4 selection:bg-blue-500/30">
 
-  <!-- Shared SVG Definitions for Reusability and Performance -->
+  <!-- Shared SVG Definitions for Reusability -->
   <svg width="0" height="0" class="hidden">
     <defs>
       <linearGradient id="matteBg" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -112,14 +114,14 @@
 
   <!-- Top Controls & Header -->
   <div class="no-print max-w-5xl w-full text-center mb-8 space-y-4">
-    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono uppercase tracking-widest">
-      High-Contrast Print Edition • A4 Sticker Layout Ready
+    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-mono uppercase tracking-widest">
+      8.4cm × 5.3cm Format • A4 Sticker Ready
     </div>
     <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-      Allen Albert T. Varias — Printable NFC & QR Card
+      Allen Albert T. Varias — Alpha V Card
     </h1>
     <p class="text-slate-400 text-sm max-w-2xl mx-auto">
-      Upgraded with A4 grid generation. Print perfectly sized 3.5" × 2.0" cards directly onto sticker paper. Dashed cutting guides are included on the grid for precise trimming.
+      The ultra-minimalist layout. Front features the Alpha V insignia, back houses only the large scannable QR link and your name.
     </p>
 
     <!-- View Mode Switcher & Download Buttons -->
@@ -158,7 +160,7 @@
       <div class="no-print flex items-center justify-between w-full mb-2.5 px-1">
         <span class="text-xs font-mono uppercase tracking-widest text-slate-300">Front Side</span>
       </div>
-      <div id="side-front-slot" class="print-card w-full aspect-[1050/600] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.75)] border border-slate-700" style="width: 3.5in; height: 2in;">
+      <div id="side-front-slot" class="print-card w-full aspect-[1050/662] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.75)] border border-slate-700" style="width: 8.4cm; height: 5.3cm;">
         <!-- Injected via JS -->
       </div>
     </div>
@@ -168,7 +170,7 @@
       <div class="no-print flex items-center justify-between w-full mb-2.5 px-1">
         <span class="text-xs font-mono uppercase tracking-widest text-slate-300">Back Side</span>
       </div>
-      <div id="side-back-slot" class="print-card w-full aspect-[1050/600] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.75)] border border-slate-700" style="width: 3.5in; height: 2in;">
+      <div id="side-back-slot" class="print-card w-full aspect-[1050/662] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.75)] border border-slate-700" style="width: 8.4cm; height: 5.3cm;">
         <!-- Injected via JS -->
       </div>
     </div>
@@ -180,7 +182,7 @@
     <p class="text-xs font-mono text-blue-400 uppercase tracking-widest mb-4">
       Click the card below to flip between Front & Back
     </p>
-    <div onclick="document.getElementById('flip-inner').classList.toggle('flipped')" class="perspective-1000 w-full aspect-[1050/600] cursor-pointer">
+    <div onclick="document.getElementById('flip-inner').classList.toggle('flipped')" class="perspective-1000 w-full aspect-[1050/662] cursor-pointer">
       <div id="flip-inner" class="flip-card-inner relative w-full h-full">
         <div id="flip-front-slot" class="flip-card-front absolute inset-0 rounded-2xl overflow-hidden shadow-2xl border border-slate-700"></div>
         <div id="flip-back-slot" class="flip-card-back absolute inset-0 rounded-2xl overflow-hidden shadow-2xl border border-slate-700"></div>
@@ -191,30 +193,29 @@
   <!-- ================= A4 GRID PRINT VIEW ================= -->
   <div id="a4-print-view" class="view-container hidden flex-col items-center justify-center w-full my-4">
     <div class="no-print mb-4 text-slate-400 text-sm italic">
-      This 2x5 grid layout is scaled exactly to fit on an A4 sheet. Dashed cut lines separate each 3.5" x 2.0" card.
+      This 2x5 grid is exacted to 8.4cm x 5.3cm. Dashed cut lines separate each card perfectly for sticker paper.
     </div>
     
-    <!-- The physical A4 bounds -->
+    <!-- The physical A4 bounds wrapper for on-screen preview -->
     <div class="bg-white p-8 rounded-lg shadow-2xl overflow-hidden">
       <!-- The Card Grid -->
-      <div id="a4-grid" class="grid" style="grid-template-columns: repeat(2, 3.5in); grid-auto-rows: 2in; gap: 0;">
+      <div id="a4-grid" class="grid" style="grid-template-columns: repeat(2, 8.4cm); grid-auto-rows: 5.3cm; gap: 0;">
         <!-- 10 Cards will be injected here via JS -->
       </div>
     </div>
   </div>
 
-
   <script>
-    // Master SVG Templates as Strings
+    // Front SVG string - Aspect scaled to fit 8.4cm x 5.3cm perfectly (1050x662)
     const frontCardTemplate = `
-      <svg viewBox="0 0 1050 600" width="100%" height="100%">
+      <svg viewBox="0 0 1050 662" width="100%" height="100%">
         <!-- Card Base -->
-        <rect width="1050" height="600" fill="url(#matteBg)" />
-        <rect width="1050" height="600" fill="url(#ambientGlow)" />
-        <rect x="28" y="28" width="994" height="544" rx="14" fill="none" stroke="#ffffff" stroke-opacity="0.18" stroke-width="2" />
+        <rect width="1050" height="662" fill="url(#matteBg)" />
+        <rect width="1050" height="662" fill="url(#ambientGlow)" />
+        <rect x="28" y="28" width="994" height="606" rx="14" fill="none" stroke="#ffffff" stroke-opacity="0.18" stroke-width="2" />
 
-        <!-- High-Contrast NFC Indicator -->
-        <g transform="translate(525, 76)" fill="none" stroke="#ffffff" stroke-linecap="round">
+        <!-- High-Contrast NFC Indicator (Centered relative to adjusted height) -->
+        <g transform="translate(525, 107)" fill="none" stroke="#ffffff" stroke-linecap="round">
           <text x="-34" y="7" fill="#ffffff" stroke="none" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800" letter-spacing="3">NFC</text>
           <path d="M 22 -7 A 10 10 0 0 1 22 9" stroke-width="3" />
           <path d="M 29 -13 A 18 18 0 0 1 29 15" stroke-width="3" />
@@ -222,45 +223,34 @@
         </g>
 
         <!-- AV Emblem -->
-        <g filter="url(#dropShadow)" transform="translate(0, 8)">
+        <g filter="url(#dropShadow)" transform="translate(0, 39)">
           <path d="M 445 140 C 453 125, 468 125, 476 140 L 560 320 L 510 320 L 460 200 L 398 320 L 348 320 Z" fill="url(#metalBlue)" />
           <path d="M 405 263 L 685 110 L 562 317 C 553 331, 536 331, 527 317 L 492 247 L 525 227 L 545 269 L 622 151 L 405 273 Z" fill="url(#metalSilver)" />
         </g>
 
         <!-- Name -->
-        <text x="525" y="432" text-anchor="middle" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800" letter-spacing="4.5">ALLEN ALBERT T. VARIAS</text>
+        <text x="525" y="463" text-anchor="middle" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800" letter-spacing="4.5">ALLEN ALBERT T. VARIAS</text>
         <!-- Divider -->
-        <rect x="465" y="452" width="120" height="3.5" rx="2" fill="#60a5fa" />
+        <rect x="465" y="483" width="120" height="3.5" rx="2" fill="#60a5fa" />
         <!-- Title -->
-        <text x="525" y="495" text-anchor="middle" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="7.5">SYSTEMS ENGINEER</text>
+        <text x="525" y="526" text-anchor="middle" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="7.5">SYSTEMS ENGINEER</text>
       </svg>
     `;
 
+    // Back SVG String - Stripped down to just the massive QR Code and Name
     const backCardTemplate = `
-      <svg viewBox="0 0 1050 600" width="100%" height="100%">
-        <!-- Card Base -->
-        <rect width="1050" height="600" fill="url(#matteBg)" />
-        <rect x="28" y="28" width="994" height="544" rx="14" fill="none" stroke="#ffffff" stroke-opacity="0.18" stroke-width="2" />
+      <svg viewBox="0 0 1050 662" width="100%" height="100%">
+        <!-- Card Base (Consistent Matte Black) -->
+        <rect width="1050" height="662" fill="url(#matteBg)" />
+        <rect x="28" y="28" width="994" height="606" rx="14" fill="none" stroke="#ffffff" stroke-opacity="0.18" stroke-width="2" />
 
-        <!-- SCAN THIS Header -->
-        <text x="525" y="84" text-anchor="middle" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800" letter-spacing="6.5">SCAN THIS</text>
+        <!-- Giant Pure White QR Frame - Perfectly centered and sized up -->
+        <rect x="355" y="115" width="340" height="340" rx="16" fill="#ffffff" />
+        <!-- QR Target Group (Vector Paths dynamically drawn here) -->
+        <g class="qr-code-group" transform="translate(372, 132)"></g>
 
-        <!-- Pure White QR Frame -->
-        <rect x="410" y="104" width="230" height="230" rx="12" fill="#ffffff" />
-        <!-- QR Target Group -->
-        <g class="qr-code-group" transform="translate(422, 116)"></g>
-
-        <!-- URL -->
-        <text x="525" y="374" text-anchor="middle" fill="#ffffff" font-family="'JetBrains Mono', Courier, monospace" font-size="22" font-weight="700" letter-spacing="1.2">https://alvarias.github.io/links</text>
-        <!-- Divider -->
-        <rect x="465" y="396" width="120" height="3.5" rx="2" fill="#60a5fa" />
-
-        <!-- Scripture -->
-        <text x="525" y="440" text-anchor="middle" fill="#ffffff" font-family="Inter, Georgia, serif" font-size="20.5" font-style="italic" font-weight="600" letter-spacing="0.4">"It is the glory of God to conceal a matter;</text>
-        <text x="525" y="470" text-anchor="middle" fill="#ffffff" font-family="Inter, Georgia, serif" font-size="20.5" font-style="italic" font-weight="600" letter-spacing="0.4">to search out a matter is the glory of kings."</text>
-
-        <!-- Reference -->
-        <text x="525" y="512" text-anchor="middle" fill="#93c5fd" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="800" letter-spacing="4.5">— PROVERBS 25:2</text>
+        <!-- Only the Name - No other text blocks -->
+        <text x="525" y="550" text-anchor="middle" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800" letter-spacing="4.5">ALLEN ALBERT T. VARIAS</text>
       </svg>
     `;
 
@@ -272,25 +262,23 @@
       document.getElementById("flip-back-slot").innerHTML = backCardTemplate;
     }
 
-    // Generate the 10-card A4 Grid
+    // Generate the 10-card (2x5) A4 Grid
     function generateA4Grid() {
       const layout = document.getElementById("a4-layout-select").value;
       const grid = document.getElementById("a4-grid");
       grid.innerHTML = ""; // Clear existing
 
       for (let i = 0; i < 10; i++) {
-        // Determine type for this cell
         let type = layout;
         if (layout === "mixed") {
-          type = (i < 5) ? "front" : "back"; // 5 fronts, 5 backs
+          type = (i < 5) ? "front" : "back"; // First row fronts, second row backs
         }
 
         const cell = document.createElement("div");
-        // Apply dashed border for cutting guides. Using inline styles for exact physical sizing.
-        cell.className = "card-cell border border-dashed border-slate-300 relative box-border overflow-hidden";
-        cell.style.width = "3.5in";
-        cell.style.height = "2in";
-        cell.style.borderWidth = "0.5pt";
+        // Physical dimensions explicitly forced inline to ensure A4 compliance mapping
+        cell.className = "card-cell relative overflow-hidden bg-[#0a0a0a]"; 
+        cell.style.width = "8.4cm";
+        cell.style.height = "5.3cm";
 
         if (type === "front") {
           cell.innerHTML = frontCardTemplate;
@@ -300,19 +288,19 @@
         grid.appendChild(cell);
       }
 
-      // Re-render QR Codes for all newly generated back cards
+      // Re-render QR Codes for the grid items just created
       renderQRCodes();
     }
 
-    // Generate and inject SVG QR Code into all designated target groups
+    // Generate and inject highly scaled SVG QR Code into all designated target groups
     function renderQRCodes() {
-      const targetUrl = "https://alvarias.github.io/links";
+      const targetUrl = "https://alvarias.github.io/links/"; // Updated per requirement
       const qr = qrcode(0, 'M');
       qr.addData(targetUrl);
       qr.make();
 
       const moduleCount = qr.getModuleCount();
-      const size = 206;
+      const size = 306; // Scaled up size to fit perfectly in 340px rect container
       const cell = size / moduleCount;
 
       let d = '';
@@ -330,7 +318,7 @@
 
       const qrGroups = document.querySelectorAll(".qr-code-group");
       qrGroups.forEach(group => {
-        group.innerHTML = ''; // Clear just in case
+        group.innerHTML = ''; // Reset group container
         const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
         path.setAttribute("d", d);
         path.setAttribute("fill", "#000000");
@@ -338,7 +326,7 @@
       });
     }
 
-    // View Switching Logic
+    // Interactive View Switching
     function switchView(mode) {
       const views = document.querySelectorAll('.view-container');
       views.forEach(v => {
@@ -366,7 +354,6 @@
         const activeView = document.getElementById('flip-view');
         activeView.classList.remove('hidden');
         activeView.classList.add('flex');
-        // Flip view doesn't act as print active source nicely, fallback to Side by Side for print
         document.getElementById('side-by-side-view').classList.add('active-print');
         btnFlip.className = "bg-slate-800 border border-blue-500 text-blue-400 font-medium px-4 py-2 rounded-lg text-sm transition";
         a4Select.classList.add('hidden');
@@ -379,11 +366,11 @@
       }
     }
 
-    // Initialize the page content
+    // Fire Initialization Payload
     window.addEventListener("DOMContentLoaded", () => {
       initBasePreviews();
-      generateA4Grid(); // Pre-generate the A4 grid so it's ready
-      switchView('side'); // Default view
+      generateA4Grid(); 
+      switchView('side');
     });
   </script>
 </body>
